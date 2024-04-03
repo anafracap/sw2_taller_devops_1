@@ -23,3 +23,19 @@ jobs:
       - run: npm run  build --if-present
       - run: npm test
 
+  execute: 
+    needs: build
+    runs-on: windows-server-latest
+    if: github.ref == 'refs/heads/main'
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Use Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - run: npm ci
+      - run: npm run deploy
