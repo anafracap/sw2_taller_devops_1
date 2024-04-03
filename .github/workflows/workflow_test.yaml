@@ -2,7 +2,7 @@ name: Node.js test pulls
 
 on:
   push:
-    branches: ["main"]
+    branches: ["feature/practice2"]
   pull_request:
     branches: ["main"]
 
@@ -23,4 +23,3 @@ jobs:
       - run: npm run  build --if-present
       - run: npm test
 
-    # Agrega una sección para caché de node_modules si lo deseas
